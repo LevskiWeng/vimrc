@@ -116,13 +116,21 @@ packadd matchit
 " Vundle settings
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
+
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'lifepillar/vim-wwdc16-theme.git'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'kshenoy/vim-signature'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'ctrlpvim/ctrlp.vim.git'
+Plugin 'scrooloose/nerdtree.git'
 call vundle#end()
+
 filetype plugin indent on
+colorscheme wwdc16
 set encoding=utf8
 " Map the leader key to ';' for convenience
 let mapleader=";"
@@ -135,7 +143,10 @@ nnoremap <leader>lw <C-W>l
 nnoremap <leader>hw <C-W>h
 nnoremap <leader>kw <C-W>k
 nnoremap <leader>jw <C-W>j
+nnoremap <C-tab> :tabnext<CR>
+nnoremap <C-w> :tabclose<CR>
 nmap <leader>m %
+map <leader>e :NERDTreeToggle F:/Projects<CR>
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 set incsearch
 set ignorecase
@@ -163,6 +174,14 @@ set shiftwidth=4
 set softtabstop=4
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#left_sep=' '
+let g:airline#extensions#tabline#left_alt_sep='|'
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe
+let g:ctrlp_custom_ignore= {
+	\ 'dir': '\v[\/\]\.(git|hg|svn)$',
+	\ 'file': '\v\.(exe|so|dll)$',
+	\ }
 "set foldmethod=syntax
 "nnoremap <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 "vnoremap <Space> zf
